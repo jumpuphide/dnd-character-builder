@@ -19,7 +19,9 @@
       <div class="step" data-step="3">3. Класс</div>
       <div class="step" data-step="4">4. Характеристики</div>
       <div class="step" data-step="5">5. Предыстория и навыки</div>
-      <div class="step" data-step="6">6. Итог</div>
+      <div class="step" data-step="6">6. Снаряжение</div>
+      <div class="step" data-step="7">7. Заклинания</div>
+      <div class="step" data-step="8">8. Итог</div>
     </div>
 
     <!-- Шаг 1 -->
@@ -57,6 +59,7 @@
       <h2>Класс</h2>
       <div id="classList" class="card-grid"></div>
       <div id="classDetails" class="details"></div>
+      <div id="subclassSection" style="margin-top:1rem;"></div>
     </section>
 
     <!-- Шаг 4 -->
@@ -80,6 +83,20 @@
 
     <!-- Шаг 6 -->
     <section class="panel" id="step6">
+      <h2>Снаряжение</h2>
+      <p class="info">Выберите стартовый набор или золото (упрощённо).</p>
+      <div id="equipmentOptions"></div>
+      <div id="equipmentList" style="margin-top:1rem;"></div>
+    </section>
+
+    <!-- Шаг 7 -->
+    <section class="panel" id="step7">
+      <h2>Заклинания</h2>
+      <div id="spellSection"></div>
+    </section>
+
+    <!-- Шаг 8 -->
+    <section class="panel" id="step8">
       <h2>Лист персонажа</h2>
       <div id="summary"></div>
       <button id="exportBtn" class="btn">Скопировать в буфер</button>
@@ -93,7 +110,7 @@
   </main>
 
   <footer>
-    <p>Конструктор для D&D 5e (2014). Данные упрощены для быстрого создания. Проверяйте с Мастером.</p>
+    <p>Конструктор для D&D 5e (2014). Данные упрощены. Проверяйте с Мастером.</p>
   </footer>
 
   <script src="script.js"></script>
