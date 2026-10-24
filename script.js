@@ -1,4 +1,4 @@
-// Данные D&D 5e на русском (расширенная версия)
+// Данные D&D 5e на русском
 const RACES = [
   { id: "human", name: "Человек", bonuses: { str:1, dex:1, con:1, int:1, wis:1, cha:1 }, speed: 30, size: "Средний", traits: "Универсальность: +1 ко всем характеристикам. Дополнительный навык и язык." },
   { id: "elf", name: "Эльф", bonuses: { dex:2 }, speed: 30, size: "Средний", traits: "Тёмное зрение 60 фт. Острое чутьё. Наследие фей. Транс." },
@@ -13,17 +13,17 @@ const RACES = [
 
 const CLASSES = [
   { id: "barbarian", name: "Варвар", hitDie: 12, primary: "Сила", saves: ["str", "con"], skills: 2, skillList: ["athletics","animal_handling","intimidation","nature","perception","survival"], features: "Ярость, Защита без доспехов", subclasses: ["Берсерк", "Тотемный воин"] },
-  { id: "bard", name: "Бард", hitDie: 8, primary: "Харизма", saves: ["dex", "cha"], skills: 3, skillList: ["any"], features: "Вдохновение барда, Заклинания", subclasses: ["Коллегия знаний", "Коллегия доблести"], caster: true, spellAbility: "cha" },
-  { id: "cleric", name: "Жрец", hitDie: 8, primary: "Мудрость", saves: ["wis", "cha"], skills: 2, skillList: ["history","insight","medicine","persuasion","religion"], features: "Божественный домен, Заклинания", subclasses: ["Домен жизни", "Домен войны"], caster: true, spellAbility: "wis" },
-  { id: "druid", name: "Друид", hitDie: 8, primary: "Мудрость", saves: ["int", "wis"], skills: 2, skillList: ["arcana","animal_handling","insight","medicine","nature","perception","religion","survival"], features: "Друидический язык, Заклинания", subclasses: ["Круг земли", "Круг луны"], caster: true, spellAbility: "wis" },
+  { id: "bard", name: "Бард", hitDie: 8, primary: "Харизма", saves: ["dex", "cha"], skills: 3, skillList: ["any"], features: "Вдохновение барда, Заклинания", subclasses: ["Коллегия знаний", "Коллегия доблести"], caster: true, spellAbility: "cha", cantrips: 2, spellsKnown: 4 },
+  { id: "cleric", name: "Жрец", hitDie: 8, primary: "Мудрость", saves: ["wis", "cha"], skills: 2, skillList: ["history","insight","medicine","persuasion","religion"], features: "Божественный домен, Заклинания", subclasses: ["Домен жизни", "Домен войны"], caster: true, spellAbility: "wis", cantrips: 3, prepared: true },
+  { id: "druid", name: "Друид", hitDie: 8, primary: "Мудрость", saves: ["int", "wis"], skills: 2, skillList: ["arcana","animal_handling","insight","medicine","nature","perception","religion","survival"], features: "Друидический язык, Заклинания", subclasses: ["Круг земли", "Круг луны"], caster: true, spellAbility: "wis", cantrips: 2, prepared: true },
   { id: "fighter", name: "Воин", hitDie: 10, primary: "Сила или Ловкость", saves: ["str", "con"], skills: 2, skillList: ["acrobatics","animal_handling","athletics","history","insight","intimidation","perception","survival"], features: "Боевой стиль, Второе дыхание", subclasses: ["Чемпион", "Воитель"] },
   { id: "monk", name: "Монах", hitDie: 8, primary: "Ловкость и Мудрость", saves: ["str", "dex"], skills: 2, skillList: ["acrobatics","athletics","history","insight","religion","stealth"], features: "Боевые искусства, Ци", subclasses: ["Путь открытой ладони", "Путь тени"] },
-  { id: "paladin", name: "Паладин", hitDie: 10, primary: "Сила и Харизма", saves: ["wis", "cha"], skills: 2, skillList: ["athletics","insight","intimidation","medicine","persuasion","religion"], features: "Божественное чувство, Наложение рук", subclasses: ["Клятва преданности", "Клятва мести"], caster: true, spellAbility: "cha" },
-  { id: "ranger", name: "Следопыт", hitDie: 10, primary: "Ловкость и Мудрость", saves: ["str", "dex"], skills: 3, skillList: ["animal_handling","athletics","insight","investigation","nature","perception","stealth","survival"], features: "Излюбленный враг, Исследователь природы", subclasses: ["Охотник", "Повелитель зверей"], caster: true, spellAbility: "wis" },
+  { id: "paladin", name: "Паладин", hitDie: 10, primary: "Сила и Харизма", saves: ["wis", "cha"], skills: 2, skillList: ["athletics","insight","intimidation","medicine","persuasion","religion"], features: "Божественное чувство, Наложение рук", subclasses: ["Клятва преданности", "Клятва мести"], caster: true, spellAbility: "cha", prepared: true },
+  { id: "ranger", name: "Следопыт", hitDie: 10, primary: "Ловкость и Мудрость", saves: ["str", "dex"], skills: 3, skillList: ["animal_handling","athletics","insight","investigation","nature","perception","stealth","survival"], features: "Излюбленный враг, Исследователь природы", subclasses: ["Охотник", "Повелитель зверей"], caster: true, spellAbility: "wis", spellsKnown: 2 },
   { id: "rogue", name: "Плут", hitDie: 8, primary: "Ловкость", saves: ["dex", "int"], skills: 4, skillList: ["acrobatics","athletics","deception","insight","intimidation","investigation","perception","performance","persuasion","sleight_of_hand","stealth"], features: "Скрытая атака, Воровской жаргон", subclasses: ["Вор", "Убийца"] },
-  { id: "sorcerer", name: "Чародей", hitDie: 6, primary: "Харизма", saves: ["con", "cha"], skills: 2, skillList: ["arcana","deception","insight","intimidation","persuasion","religion"], features: "Происхождение чародея, Заклинания", subclasses: ["Драконья кровь", "Дикая магия"], caster: true, spellAbility: "cha" },
-  { id: "warlock", name: "Колдун", hitDie: 8, primary: "Харизма", saves: ["wis", "cha"], skills: 2, skillList: ["arcana","deception","history","intimidation","investigation","nature","religion"], features: "Покровитель, Заклинания", subclasses: ["Архифея", "Бестия"], caster: true, spellAbility: "cha" },
-  { id: "wizard", name: "Волшебник", hitDie: 6, primary: "Интеллект", saves: ["int", "wis"], skills: 2, skillList: ["arcana","history","insight","investigation","medicine","religion"], features: "Восстановление заклинаний, Заклинания", subclasses: ["Школа воплощения", "Школа иллюзий"], caster: true, spellAbility: "int" }
+  { id: "sorcerer", name: "Чародей", hitDie: 6, primary: "Харизма", saves: ["con", "cha"], skills: 2, skillList: ["arcana","deception","insight","intimidation","persuasion","religion"], features: "Происхождение чародея, Заклинания", subclasses: ["Драконья кровь", "Дикая магия"], caster: true, spellAbility: "cha", cantrips: 4, spellsKnown: 2 },
+  { id: "warlock", name: "Колдун", hitDie: 8, primary: "Харизма", saves: ["wis", "cha"], skills: 2, skillList: ["arcana","deception","history","intimidation","investigation","nature","religion"], features: "Покровитель, Заклинания", subclasses: ["Архифея", "Бестия"], caster: true, spellAbility: "cha", cantrips: 2, spellsKnown: 2 },
+  { id: "wizard", name: "Волшебник", hitDie: 6, primary: "Интеллект", saves: ["int", "wis"], skills: 2, skillList: ["arcana","history","insight","investigation","medicine","religion"], features: "Восстановление заклинаний, Заклинания", subclasses: ["Школа воплощения", "Школа иллюзий"], caster: true, spellAbility: "int", cantrips: 3, prepared: true }
 ];
 
 const BACKGROUNDS = [
@@ -58,30 +58,34 @@ const SKILLS = {
   survival: { name: "Выживание", ability: "wis" }
 };
 
-const EQUIPMENT_PACKS = {
-  barbarian: "Топор, два ручных топора, набор исследователя, 4 метательных копья",
-  bard: "Рапира, набор дипломата, лютня, кожаный доспех",
-  cleric: "Булава, чешуйчатый доспех, щит, святой символ, набор священника",
-  druid: "Щит, серп, кожаный доспех, набор исследователя",
-  fighter: "Кольчуга, боевой молот, щит, набор исследователя",
-  monk: "Короткий меч, набор исследователя, 10 дротиков",
-  paladin: "Кольчуга, боевой молот, щит, святой символ, набор священника",
-  ranger: "Кольчуга, два коротких меча, длинный лук, набор исследователя",
-  rogue: "Рапира, короткий лук, кожаный доспех, набор вора",
-  sorcerer: "Лёгкий арбалет, набор исследователя, два кинжала",
-  warlock: "Лёгкий арбалет, кожаный доспех, набор учёного",
-  wizard: "Посох, набор учёного, книга заклинаний"
+const ARMORS = {
+  none: { name: "Без доспеха", base: 10, dex: true, maxDex: 99 },
+  leather: { name: "Кожаный", base: 11, dex: true, maxDex: 99 },
+  studded: { name: "Клёпаный кожаный", base: 12, dex: true, maxDex: 99 },
+  chain: { name: "Кольчуга", base: 16, dex: true, maxDex: 2 },
+  scale: { name: "Чешуйчатый", base: 14, dex: true, maxDex: 2 }
 };
 
+const WEAPONS = [
+  { id: "longsword", name: "Длинный меч", damage: "1d8", ability: "str", finesse: false },
+  { id: "rapier", name: "Рапира", damage: "1d8", ability: "dex", finesse: true },
+  { id: "shortsword", name: "Короткий меч", damage: "1d6", ability: "dex", finesse: true },
+  { id: "greatsword", name: "Двуручный меч", damage: "2d6", ability: "str", finesse: false },
+  { id: "handaxe", name: "Ручной топор", damage: "1d6", ability: "str", finesse: false },
+  { id: "dagger", name: "Кинжал", damage: "1d4", ability: "dex", finesse: true },
+  { id: "longbow", name: "Длинный лук", damage: "1d8", ability: "dex", finesse: false },
+  { id: "shortbow", name: "Короткий лук", damage: "1d6", ability: "dex", finesse: false }
+];
+
 const BASIC_SPELLS = {
-  bard: ["Лечащее слово", "Очарование личности", "Насмешка"],
-  cleric: ["Лечение ран", "Священное пламя", "Благословение"],
-  druid: ["Добро", "Шипованная поросль", "Лечение ран"],
-  paladin: ["Божественное благоволение", "Обнаружение зла и добра"],
-  ranger: ["Охотничья метка", "Лечение ран"],
-  sorcerer: ["Огненные ладони", "Магическая стрела", "Свет"],
-  warlock: ["Эльдричский взрыв", "Очарование личности"],
-  wizard: ["Магическая стрела", "Магическая рука", "Свет"]
+  bard: ["Лечащее слово", "Очарование личности", "Насмешка", "Сон"],
+  cleric: ["Лечение ран", "Священное пламя", "Благословение", "Наставление"],
+  druid: ["Добро", "Шипованная поросль", "Лечение ран", "Произведение огня"],
+  paladin: ["Божественное благоволение", "Обнаружение зла и добра", "Благословение"],
+  ranger: ["Охотничья метка", "Лечение ран", "Сигнал тревоги"],
+  sorcerer: ["Огненные ладони", "Магическая стрела", "Свет", "Молния"],
+  warlock: ["Эльдричский взрыв", "Очарование личности", "Гекс"],
+  wizard: ["Магическая стрела", "Магическая рука", "Свет", "Щит"]
 };
 
 const ABILITY_NAMES = {
@@ -90,16 +94,20 @@ const ABILITY_NAMES = {
 };
 
 const POINT_COSTS = { 8:0, 9:1, 10:2, 11:3, 12:4, 13:5, 14:7, 15:9 };
+const STANDARD_ARRAY = [15, 14, 13, 12, 10, 8];
 
 const state = {
   step: 1,
   race: null,
   class: null,
   subclass: null,
+  abilityMethod: "pointbuy",
   abilities: { str:8, dex:8, con:8, int:8, wis:8, cha:8 },
   background: null,
   skills: new Set(),
-  equipment: "pack",
+  armor: "none",
+  shield: false,
+  weapon: "longsword",
   spells: new Set(),
   charName: "",
   playerName: "",
@@ -115,25 +123,61 @@ document.addEventListener("DOMContentLoaded", () => {
   renderBackgrounds();
   renderSkills();
   updateNav();
+  loadFromStorage();
 
   document.getElementById("nextBtn").onclick = nextStep;
   document.getElementById("prevBtn").onclick = prevStep;
   document.getElementById("exportBtn").onclick = exportChar;
   document.getElementById("printBtn").onclick = () => window.print();
+  document.getElementById("saveBtn").onclick = saveToStorage;
+  document.getElementById("loadBtn").onclick = loadFromStorage;
 
-  document.getElementById("charName").oninput = e => state.charName = e.target.value;
-  document.getElementById("playerName").oninput = e => state.playerName = e.target.value;
-  document.getElementById("level").oninput = e => { state.level = +e.target.value || 1; updateSummary(); };
-  document.getElementById("alignment").onchange = e => state.alignment = e.target.value;
-  document.getElementById("xp").oninput = e => state.xp = +e.target.value || 0;
+  document.getElementById("charName").oninput = e => { state.charName = e.target.value; saveToStorage(); };
+  document.getElementById("playerName").oninput = e => { state.playerName = e.target.value; saveToStorage(); };
+  document.getElementById("level").oninput = e => { state.level = +e.target.value || 1; updateSummary(); saveToStorage(); };
+  document.getElementById("alignment").onchange = e => { state.alignment = e.target.value; saveToStorage(); };
+  document.getElementById("xp").oninput = e => { state.xp = +e.target.value || 0; saveToStorage(); };
   document.getElementById("background").onchange = e => {
     state.background = e.target.value;
     updateSkillSelection();
+    saveToStorage();
   };
 });
 
+function setAbilityMethod(method) {
+  state.abilityMethod = method;
+  document.getElementById("rollBtn").style.display = method === "roll" ? "inline-block" : "none";
+  if (method === "standard") {
+    const keys = Object.keys(ABILITY_NAMES);
+    STANDARD_ARRAY.forEach((v, i) => state.abilities[keys[i]] = v);
+  } else if (method === "pointbuy") {
+    Object.keys(state.abilities).forEach(k => state.abilities[k] = 8);
+  }
+  renderAbilities();
+  saveToStorage();
+}
+
+function rollAbilities() {
+  const keys = Object.keys(ABILITY_NAMES);
+  keys.forEach(k => {
+    const rolls = Array.from({length:4}, () => Math.floor(Math.random()*6)+1);
+    rolls.sort((a,b)=>a-b);
+    state.abilities[k] = rolls.slice(1).reduce((a,b)=>a+b,0);
+  });
+  renderAbilities();
+  saveToStorage();
+}
+
 function getProficiencyBonus() {
   return Math.ceil(state.level / 4) + 1;
+}
+
+function getSpellSlots() {
+  if (!state.class || !state.class.caster) return "—";
+  const lvl = state.level;
+  if (lvl === 1) return "2 слота 1 круга";
+  if (lvl <= 2) return "3 слота 1 круга";
+  return "3+ слота 1 круга (упрощённо)";
 }
 
 function renderRaces() {
@@ -153,6 +197,7 @@ function selectRace(id) {
   const d = document.getElementById("raceDetails");
   d.innerHTML = `<strong>${state.race.name}</strong><br>Скорость: ${state.race.speed} фт · Размер: ${state.race.size}<br><br>${state.race.traits}`;
   renderAbilities();
+  saveToStorage();
 }
 
 function renderClasses() {
@@ -175,13 +220,14 @@ function selectClass(id) {
   
   const subEl = document.getElementById("subclassSection");
   if (state.class.subclasses) {
-    subEl.innerHTML = `<h3>Подкласс (уровень 1–3)</h3>` + state.class.subclasses.map(s => 
-      `<label><input type="radio" name="subclass" value="${s}" onchange="state.subclass='${s}'"> ${s}</label>`
+    subEl.innerHTML = `<h3>Подкласс</h3>` + state.class.subclasses.map(s => 
+      `<label><input type="radio" name="subclass" value="${s}" onchange="state.subclass='${s}'; saveToStorage()"> ${s}</label>`
     ).join("<br>");
   } else subEl.innerHTML = "";
   updateSkillSelection();
   renderEquipment();
   renderSpells();
+  saveToStorage();
 }
 
 function getFinalAbility(key) {
@@ -195,20 +241,27 @@ function getModifier(score) {
 }
 
 function getPointsSpent() {
-  return Object.values(state.abilities).reduce((sum, s) => sum + POINT_COSTS[s], 0);
+  return Object.values(state.abilities).reduce((sum, s) => sum + (POINT_COSTS[s] || 0), 0);
 }
 
 function renderAbilities() {
   const el = document.getElementById("abilities");
   const spent = getPointsSpent();
-  document.getElementById("pointsLeft").textContent = 27 - spent;
+  const info = document.getElementById("abilityInfo");
+  if (state.abilityMethod === "pointbuy") {
+    info.innerHTML = `Осталось очков: <strong id="pointsLeft">${27 - spent}</strong>`;
+  } else if (state.abilityMethod === "standard") {
+    info.textContent = "Стандартный массив: 15, 14, 13, 12, 10, 8 (распределите вручную кнопками)";
+  } else {
+    info.textContent = "Бросок 4d6 (отбрасывая меньший). Нажмите «Бросить заново» для переброски.";
+  }
 
   el.innerHTML = Object.keys(ABILITY_NAMES).map(key => {
     const base = state.abilities[key];
     const final = getFinalAbility(key);
     const mod = getModifier(final);
-    const canUp = base < 15 && (27 - spent) >= (POINT_COSTS[base+1] - POINT_COSTS[base]);
-    const canDown = base > 8;
+    const canUp = state.abilityMethod === "pointbuy" ? (base < 15 && (27 - spent) >= (POINT_COSTS[base+1] - POINT_COSTS[base])) : base < 18;
+    const canDown = base > 3;
     return `
       <div class="ability">
         <h3>${ABILITY_NAMES[key]}</h3>
@@ -224,12 +277,16 @@ function renderAbilities() {
 
 function changeAbility(key, delta) {
   const newScore = state.abilities[key] + delta;
-  if (newScore < 8 || newScore > 15) return;
-  const newSpent = getPointsSpent() - POINT_COSTS[state.abilities[key]] + POINT_COSTS[newScore];
-  if (newSpent > 27) return;
+  if (newScore < 3 || newScore > 18) return;
+  if (state.abilityMethod === "pointbuy") {
+    if (newScore < 8 || newScore > 15) return;
+    const newSpent = getPointsSpent() - POINT_COSTS[state.abilities[key]] + POINT_COSTS[newScore];
+    if (newSpent > 27) return;
+  }
   state.abilities[key] = newScore;
   renderAbilities();
   updateSummary();
+  saveToStorage();
 }
 
 function renderBackgrounds() {
@@ -263,19 +320,41 @@ function toggleSkill(id, checked) {
   if (checked) state.skills.add(id);
   else state.skills.delete(id);
   updateSummary();
+  saveToStorage();
+}
+
+function updateEquipment() {
+  state.armor = document.getElementById("armorSelect").value;
+  state.shield = document.getElementById("shield").checked;
+  saveToStorage();
+  updateSummary();
 }
 
 function renderEquipment() {
-  const el = document.getElementById("equipmentOptions");
-  if (!state.class) {
-    el.innerHTML = "<p>Сначала выберите класс.</p>";
-    return;
-  }
-  const pack = EQUIPMENT_PACKS[state.class.id] || "Стандартный набор";
-  el.innerHTML = `
-    <label><input type="radio" name="eq" value="pack" checked onchange="state.equipment='pack'"> Стартовый набор: ${pack}</label><br>
-    <label><input type="radio" name="eq" value="gold" onchange="state.equipment='gold'"> Вместо набора — золото (на усмотрение Мастера)</label>
-  `;
+  const el = document.getElementById("weaponSelect");
+  el.innerHTML = `<label>Оружие
+    <select id="weapon" onchange="state.weapon=this.value; saveToStorage();">
+      ${WEAPONS.map(w => `<option value="${w.id}">${w.name} (${w.damage})</option>`).join("")}
+    </select>
+  </label>`;
+  const sel = document.getElementById("weapon");
+  if (sel) sel.value = state.weapon;
+}
+
+function getAC() {
+  const armor = ARMORS[state.armor] || ARMORS.none;
+  const dexMod = getModifier(getFinalAbility("dex"));
+  let dexBonus = armor.dex ? Math.min(dexMod, armor.maxDex) : 0;
+  let ac = armor.base + dexBonus;
+  if (state.shield) ac += 2;
+  return ac;
+}
+
+function getAttackBonus(weaponId) {
+  const w = WEAPONS.find(x => x.id === weaponId) || WEAPONS[0];
+  const ability = w.finesse ? "dex" : w.ability;
+  const mod = getModifier(getFinalAbility(ability));
+  return mod + getProficiencyBonus();
 }
 
 function renderSpells() {
@@ -284,14 +363,23 @@ function renderSpells() {
     el.innerHTML = "<p>Этот класс не использует заклинания (или использует их позже).</p>";
     return;
   }
+  const slots = getSpellSlots();
+  const cantrips = state.class.cantrips || 0;
+  const known = state.class.spellsKnown || (state.class.prepared ? "подготавливаемые" : 0);
   const list = BASIC_SPELLS[state.class.id] || [];
-  el.innerHTML = `<p>Выберите заговоры / заклинания 1 круга (упрощённо):</p>` +
-    list.map(sp => `<label><input type="checkbox" onchange="toggleSpell('${sp}', this.checked)"> ${sp}</label><br>`).join("");
+  el.innerHTML = `
+    <p><strong>Слоты:</strong> ${slots}<br>
+    <strong>Заговоры:</strong> ${cantrips}<br>
+    <strong>Заклинания:</strong> ${known}</p>
+    <p>Выберите:</p>
+    ${list.map(sp => `<label><input type="checkbox" onchange="toggleSpell('${sp}', this.checked)"> ${sp}</label><br>`).join("")}
+  `;
 }
 
 function toggleSpell(name, checked) {
   if (checked) state.spells.add(name);
   else state.spells.delete(name);
+  saveToStorage();
 }
 
 function nextStep() {
@@ -336,9 +424,10 @@ function updateSummary() {
   const prof = getProficiencyBonus();
   const dexMod = getModifier(getFinalAbility("dex"));
   const conMod = getModifier(getFinalAbility("con"));
-  const ac = 10 + dexMod;
+  const ac = getAC();
   const initiative = dexMod;
   const hp = state.class ? state.class.hitDie + conMod : "—";
+  const passivePerception = 10 + getModifier(getFinalAbility("wis")) + (state.skills.has("perception") ? prof : 0);
 
   const abilities = Object.keys(ABILITY_NAMES).map(k => {
     const final = getFinalAbility(k);
@@ -359,7 +448,10 @@ function updateSummary() {
     return `${mark} ${s.name}: ${total >= 0 ? "+" : ""}${total}`;
   }).join("\n");
 
-  const eq = state.equipment === "pack" && state.class ? EQUIPMENT_PACKS[state.class.id] : "Золото (на усмотрение)";
+  const armor = ARMORS[state.armor] || ARMORS.none;
+  const weapon = WEAPONS.find(w => w.id === state.weapon) || WEAPONS[0];
+  const atk = getAttackBonus(state.weapon);
+  const spellInfo = state.class && state.class.caster ? getSpellSlots() : "—";
   const spellList = [...state.spells].join(", ") || "нет";
 
   el.textContent = `=== ЛИСТ ПЕРСОНАЖА ===
@@ -375,16 +467,19 @@ function updateSummary() {
 Характеристики:
 ${abilities}
 
-КЗ: ${ac} (базовый 10 + Ловк.)
+КЗ: ${ac} (${armor.name}${state.shield ? " + щит" : ""})
 Инициатива: ${initiative >= 0 ? "+" : ""}${initiative}
 Хиты (1 ур.): ${hp}
+Пассивное восприятие: ${passivePerception}
 Спасброски: ${saves}
+
+Атака: ${weapon.name} — ${atk >= 0 ? "+" : ""}${atk} к попаданию, урон ${weapon.damage}
 
 Навыки:
 ${skillLines}
 
-Снаряжение: ${eq}
-Заклинания: ${spellList}
+Заклинания: ${spellInfo}
+Выбранные: ${spellList}
 
 (Создано конструктором D&D 5e)`;
 }
@@ -395,7 +490,40 @@ function exportChar() {
   navigator.clipboard.writeText(text).then(() => alert("Скопировано в буфер обмена!")).catch(() => alert("Не удалось скопировать. Выделите текст вручную."));
 }
 
+function saveToStorage() {
+  const data = {
+    ...state,
+    skills: [...state.skills],
+    spells: [...state.spells]
+  };
+  localStorage.setItem("dndCharacter", JSON.stringify(data));
+}
+
+function loadFromStorage() {
+  const raw = localStorage.getItem("dndCharacter");
+  if (!raw) return;
+  try {
+    const data = JSON.parse(raw);
+    Object.assign(state, data);
+    state.skills = new Set(data.skills || []);
+    state.spells = new Set(data.spells || []);
+    document.getElementById("charName").value = state.charName || "";
+    document.getElementById("playerName").value = state.playerName || "";
+    document.getElementById("level").value = state.level || 1;
+    document.getElementById("alignment").value = state.alignment || "";
+    document.getElementById("xp").value = state.xp || 0;
+    if (state.background) document.getElementById("background").value = state.background;
+    renderAbilities();
+    if (state.race) selectRace(state.race.id);
+    if (state.class) selectClass(state.class.id);
+    updateSummary();
+  } catch (e) {}
+}
+
 window.changeAbility = changeAbility;
 window.toggleSkill = toggleSkill;
 window.toggleSpell = toggleSpell;
+window.setAbilityMethod = setAbilityMethod;
+window.rollAbilities = rollAbilities;
+window.updateEquipment = updateEquipment;
 window.state = state;
