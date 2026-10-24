@@ -24,7 +24,6 @@
       <div class="step" data-step="8">8. Итог</div>
     </div>
 
-    <!-- Шаг 1 -->
     <section class="panel active" id="step1">
       <h2>Основная информация</h2>
       <label>Имя персонажа <input type="text" id="charName" placeholder="Например, Эльдар"></label>
@@ -45,16 +44,18 @@
         </select>
       </label>
       <label>Опыт <input type="number" id="xp" value="0"></label>
+      <div style="margin-top:1rem;">
+        <button id="saveBtn" class="btn secondary">Сохранить</button>
+        <button id="loadBtn" class="btn secondary">Загрузить</button>
+      </div>
     </section>
 
-    <!-- Шаг 2 -->
     <section class="panel" id="step2">
       <h2>Раса</h2>
       <div id="raceList" class="card-grid"></div>
       <div id="raceDetails" class="details"></div>
     </section>
 
-    <!-- Шаг 3 -->
     <section class="panel" id="step3">
       <h2>Класс</h2>
       <div id="classList" class="card-grid"></div>
@@ -62,14 +63,18 @@
       <div id="subclassSection" style="margin-top:1rem;"></div>
     </section>
 
-    <!-- Шаг 4 -->
     <section class="panel" id="step4">
-      <h2>Характеристики (Point Buy — 27 очков)</h2>
-      <p class="info">Все характеристики начинаются с 8. Максимум 15 до расовых бонусов. Осталось очков: <strong id="pointsLeft">27</strong></p>
+      <h2>Характеристики</h2>
+      <div style="margin-bottom:1rem;">
+        <label><input type="radio" name="abilityMethod" value="pointbuy" checked onchange="setAbilityMethod('pointbuy')"> Point Buy (27 очков)</label><br>
+        <label><input type="radio" name="abilityMethod" value="standard" onchange="setAbilityMethod('standard')"> Стандартный массив</label><br>
+        <label><input type="radio" name="abilityMethod" value="roll" onchange="setAbilityMethod('roll')"> Бросок 4d6 (drop lowest)</label>
+        <button id="rollBtn" class="btn secondary" style="margin-top:0.5rem; display:none;" onclick="rollAbilities()">Бросить заново</button>
+      </div>
+      <p class="info" id="abilityInfo">Осталось очков: <strong id="pointsLeft">27</strong></p>
       <div id="abilities" class="abilities"></div>
     </section>
 
-    <!-- Шаг 5 -->
     <section class="panel" id="step5">
       <h2>Предыстория и навыки</h2>
       <label>Предыстория
@@ -81,21 +86,30 @@
       <div id="skills" class="skills"></div>
     </section>
 
-    <!-- Шаг 6 -->
     <section class="panel" id="step6">
       <h2>Снаряжение</h2>
-      <p class="info">Выберите стартовый набор или золото (упрощённо).</p>
+      <p class="info">Выберите доспех и оружие (влияет на КЗ и атаки).</p>
       <div id="equipmentOptions"></div>
-      <div id="equipmentList" style="margin-top:1rem;"></div>
+      <div style="margin-top:1rem;">
+        <label>Доспех
+          <select id="armorSelect" onchange="updateEquipment()">
+            <option value="none">Без доспеха (10 + Ловк.)</option>
+            <option value="leather">Кожаный (11 + Ловк.)</option>
+            <option value="studded">Клёпаный кожаный (12 + Ловк.)</option>
+            <option value="chain">Кольчуга (16, Ловк. макс. +2)</option>
+            <option value="scale">Чешуйчатый (14 + Ловк. макс. +2)</option>
+          </select>
+        </label>
+        <label><input type="checkbox" id="shield" onchange="updateEquipment()"> Щит (+2 КЗ)</label>
+      </div>
+      <div id="weaponSelect" style="margin-top:1rem;"></div>
     </section>
 
-    <!-- Шаг 7 -->
     <section class="panel" id="step7">
       <h2>Заклинания</h2>
       <div id="spellSection"></div>
     </section>
 
-    <!-- Шаг 8 -->
     <section class="panel" id="step8">
       <h2>Лист персонажа</h2>
       <div id="summary"></div>
