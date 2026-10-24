@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конструктор персонажа D&D 5e</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>⚔️ Конструктор персонажа D&D 5e</h1>
+    <p class="subtitle">Создайте своего героя полностью на русском языке</p>
+  </header>
+
+  <main>
+    <div class="steps">
+      <div class="step active" data-step="1">1. Основное</div>
+      <div class="step" data-step="2">2. Раса</div>
+      <div class="step" data-step="3">3. Класс</div>
+      <div class="step" data-step="4">4. Характеристики</div>
+      <div class="step" data-step="5">5. Предыстория и навыки</div>
+      <div class="step" data-step="6">6. Итог</div>
+    </div>
+
+    <!-- Шаг 1 -->
+    <section class="panel active" id="step1">
+      <h2>Основная информация</h2>
+      <label>Имя персонажа <input type="text" id="charName" placeholder="Например, Эльдар"></label>
+      <label>Имя игрока <input type="text" id="playerName"></label>
+      <label>Уровень <input type="number" id="level" value="1" min="1" max="20"></label>
+      <label>Мировоззрение
+        <select id="alignment">
+          <option value="">— выбрать —</option>
+          <option>Законопослушный добрый</option>
+          <option>Нейтральный добрый</option>
+          <option>Хаотичный добрый</option>
+          <option>Законопослушный нейтральный</option>
+          <option>Истинно нейтральный</option>
+          <option>Хаотичный нейтральный</option>
+          <option>Законопослушный злой</option>
+          <option>Нейтральный злой</option>
+          <option>Хаотичный злой</option>
+        </select>
+      </label>
+      <label>Опыт <input type="number" id="xp" value="0"></label>
+    </section>
+
+    <!-- Шаг 2 -->
+    <section class="panel" id="step2">
+      <h2>Раса</h2>
+      <div id="raceList" class="card-grid"></div>
+      <div id="raceDetails" class="details"></div>
+    </section>
+
+    <!-- Шаг 3 -->
+    <section class="panel" id="step3">
+      <h2>Класс</h2>
+      <div id="classList" class="card-grid"></div>
+      <div id="classDetails" class="details"></div>
+    </section>
+
+    <!-- Шаг 4 -->
+    <section class="panel" id="step4">
+      <h2>Характеристики (Point Buy — 27 очков)</h2>
+      <p class="info">Все характеристики начинаются с 8. Максимум 15 до расовых бонусов. Осталось очков: <strong id="pointsLeft">27</strong></p>
+      <div id="abilities" class="abilities"></div>
+    </section>
+
+    <!-- Шаг 5 -->
+    <section class="panel" id="step5">
+      <h2>Предыстория и навыки</h2>
+      <label>Предыстория
+        <select id="background"></select>
+      </label>
+      <div id="backgroundInfo"></div>
+      <h3>Выберите навыки</h3>
+      <p id="skillHint"></p>
+      <div id="skills" class="skills"></div>
+    </section>
+
+    <!-- Шаг 6 -->
+    <section class="panel" id="step6">
+      <h2>Лист персонажа</h2>
+      <div id="summary"></div>
+      <button id="exportBtn" class="btn">Скопировать в буфер</button>
+      <button id="printBtn" class="btn secondary">Печать / PDF</button>
+    </section>
+
+    <div class="nav">
+      <button id="prevBtn" class="btn secondary" disabled>← Назад</button>
+      <button id="nextBtn" class="btn">Далее →</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Конструктор для D&D 5e (2014). Данные упрощены для быстрого создания. Проверяйте с Мастером.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
